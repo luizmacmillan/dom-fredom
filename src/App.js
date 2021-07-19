@@ -8,11 +8,9 @@ function App() {
 
   return (
     <ThemeProvider theme={ theme }>
-      <div>
-        <TopBar />
-      </div>
+      <TopBar />
     </ThemeProvider>
   );
-}
+};
 
 export default App;
