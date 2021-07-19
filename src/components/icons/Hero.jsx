@@ -1,8 +1,19 @@
 import React from 'react';
+import { makeStyles } from '@material-ui/core/styles';
+
+const useStyles = makeStyles(() => ({
+  heroContainer: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+}));
 
 const Hero = ({ width = '577.000000pt', height = '578.000000pt', color = '#000' }) => {
+  const classes = useStyles();
+  
   return (
-    <div>
+    <div className={ classes.heroContainer }>
       <svg version="1.0" xmlns="http://www.w3.org/2000/svg"
       width={ width } height={ height } viewBox="0 0 577.000000 578.000000"
       preserveAspectRatio="xMidYMid meet">
