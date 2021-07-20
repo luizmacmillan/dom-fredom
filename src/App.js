@@ -1,7 +1,7 @@
 import { createTheme, ThemeProvider } from '@material-ui/core';
 
-import TopBar from './components/TopBar';
 import themePattern from './assets/themePattern.json'
+import TopBar from './components/TopBar';
 
 function App() {
   const theme = createTheme(themePattern);

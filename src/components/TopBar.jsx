@@ -1,9 +1,11 @@
+import React, { useState } from 'react';
 import { AppBar, Box, Toolbar, IconButton } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
 
 import Hero from './icons/Hero';
+import SideBar from './SideBar';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -29,6 +31,7 @@ const useStyles = makeStyles((theme) => ({
   
 const TopBar = () => {
   const classes = useStyles();
+  const [toggleDrawer, setToggleDrawer] = useState(false);
 
   return (
     <div className={classes.root}>
@@ -38,6 +41,7 @@ const TopBar = () => {
             edge="start"
             color="inherit"
             aria-label="open drawer"
+            onClick={() => setToggleDrawer(true)}
           >
             <MenuIcon />
           </IconButton>
@@ -56,6 +60,7 @@ const TopBar = () => {
           </IconButton>
         </Toolbar>
       </AppBar>
+      <SideBar toggleDrawer={toggleDrawer} setToggleDrawer={setToggleDrawer} />
     </div>
   );
 };
