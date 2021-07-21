@@ -4,11 +4,8 @@ import {
   List,
   Divider,
   ListItem,
-  ListItemIcon,
   ListItemText,
  } from '@material-ui/core';
-
-import MailIcon from '@material-ui/icons/Mail';
 
 const SideBar = ({ toggleDrawer, setToggleDrawer }) => {
   const list = () => (
@@ -20,7 +17,6 @@ const SideBar = ({ toggleDrawer, setToggleDrawer }) => {
       <List>
         {['Serviços', 'Contato', 'Portfólio', 'FAQ'].map((text) => (
           <ListItem button key={text}>
-            <ListItemIcon>{<MailIcon />}</ListItemIcon>
             <ListItemText primary={text} />
           </ListItem>
         ))}
