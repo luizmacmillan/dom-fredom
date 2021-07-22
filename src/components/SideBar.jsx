@@ -8,6 +8,7 @@ import {
   ListItemText,
   Typography,
   Divider,
+  Box,
  } from '@material-ui/core';
  import CopyrightIcon from '@material-ui/icons/Copyright';
 
@@ -32,7 +33,6 @@ import {
     margin: theme.spacing(2, 1),
   },
   navLink: {
-    flexGrow: 1,
     textDecoration: 'none',
   },
   selected: {
@@ -43,14 +43,13 @@ import {
     borderLeft: '4px solid #FFFFFF',
     color: '#000'
   },
-  grow: {
-    boxSizing: 'border-box',
-    display: 'flex',
-    flexGrow: 1,
-    flexBasis: 0,
+  bottom: {
+    position: 'absolute',
+    bottom: '2px',
+    width: '100%',
   },
   copyright: {
-    textAlign: 'center'
+    textAlign: 'center',
   },
 }));
 
@@ -127,11 +126,12 @@ const SideBar = ({ toggleDrawer, setToggleDrawer }) => {
           </Link>
         </List>
         <Divider className={ classes.divider } />
-        <div className={ classes.grow } />
-        <Typography className={ classes.copyright }>
-          Dom Fredom 2021
-          <CopyrightIcon />
-        </Typography>
+        <Box className={ classes.bottom }>
+          <Typography className={ classes.copyright }>
+            Dom Fredom 2021
+            <CopyrightIcon fontSize="small" />
+          </Typography>
+        </Box>
     </div>
   );
 
