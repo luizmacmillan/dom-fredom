@@ -19,15 +19,19 @@ import { useHistory, Link } from "react-router-dom";
     flexDirection: 'column',
   },
   title: {
-    fontFamily: 'Fuggles, cursive',
+    fontFamily: 'Rock Salt, cursive',
     fontWeight: 'bold',
     padding: theme.spacing(1.5, 1.5, 0, 1.5),
     textAlign: 'center',
+    fontSize: '20px',
+    marginBottom: '5px'
   },
   subTitle: {
-    fontFamily: 'Fuggles, cursive',
+    fontFamily: 'Roboto, sans-serif',
     padding: theme.spacing(0, 1.5, 1,5, 1.5),
     textAlign: 'center',
+    fontSize: '14px',
+    fontWeight: '700',
   },
   divider: {
     margin: theme.spacing(2, 1),
@@ -49,7 +53,15 @@ import { useHistory, Link } from "react-router-dom";
     width: '100%',
   },
   copyright: {
-    textAlign: 'center',
+    display: 'flex',
+    alignItems: 'center',
+    fontFamily: 'Roboto, sans-serif',
+    justifyContent: 'center',
+    fontSize: '16px',
+    fontWeight: '700',
+    "& svg": {
+      marginLeft: '20px'
+    }
   },
 }));
 
