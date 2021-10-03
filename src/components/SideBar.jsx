@@ -1,5 +1,4 @@
 import React from 'react';
-import { useHistory, Link } from "react-router-dom";
 import { makeStyles } from '@material-ui/core/styles';
 import {
   SwipeableDrawer,
@@ -10,6 +9,7 @@ import {
   Divider,
   Box,
  } from '@material-ui/core';
+import { useHistory, Link } from "react-router-dom";
  import CopyrightIcon from '@material-ui/icons/Copyright';
 
  const useStyles = makeStyles((theme) => ({
@@ -56,6 +56,17 @@ import {
 const SideBar = ({ toggleDrawer, setToggleDrawer }) => {
   const history = useHistory();
   const classes = useStyles();
+  const sideBarLinksData = [
+    ["home", "Início"],
+    ["services", "Serviços"],
+    ["gallery", "Galeria de fotos"],
+    ["contact", "Contato"],
+    ["about", "Sobre nós"],
+    ["faq", "Perguntas frequentes"],
+    ["testimonials", "Depoimentos"],
+    ["partners", "Parcerias"],
+    ["bookIn", "Agende seu horário"]
+  ];
 
   const list = () => (
     <div
@@ -72,58 +83,20 @@ const SideBar = ({ toggleDrawer, setToggleDrawer }) => {
         </Typography>
         <Divider className={ classes.divider } />
         <List>
-          <Link to="/home" className={ classes.navLink }>
-            <ListItem
-              button
-              className={ history.location.pathname.includes('home') ? classes.selected : classes.unselected }>
-              <ListItemText primary="Home" />
-            </ListItem>
-          </Link>
-          <Link to="/services" className={ classes.navLink }>
-            <ListItem
-              button
-              className={
-                history.location.pathname.includes('services') ? classes.selected : classes.unselected
-              }>
-              <ListItemText primary="Serviços" />
-            </ListItem>
-          </Link>
-          <Link to="/projects" className={ classes.navLink }>
-            <ListItem
-              button
-              className={
-                history.location.pathname.includes('projects') ? classes.selected : classes.unselected
-              }>
-              <ListItemText primary="Projetos" />
-            </ListItem>
-          </Link>
-          <Link to="/contacts" className={ classes.navLink }>
-            <ListItem
-              button
-              className={
-                history.location.pathname.includes('contacts') ? classes.selected : classes.unselected
-              }>
-              <ListItemText primary="Contatos" />
-            </ListItem>
-          </Link>
-          <Link to="/about" className={ classes.navLink }>
-            <ListItem
-              button
-              className={
-                history.location.pathname.includes('about') ? classes.selected : classes.unselected
-              }>
-              <ListItemText primary="Sobre" />
-            </ListItem>
-          </Link>
-          <Link to="/faq" className={ classes.navLink }>
-            <ListItem
-              button
-              className={
-                history.location.pathname.includes('faq') ? classes.selected : classes.unselected
-              }>
-                <ListItemText primary="FAQ" />
-              </ListItem>
-          </Link>
+          {sideBarLinksData.map(linkItem => {
+            return(
+              <Link to={ `/${linkItem[0]}` } className={ classes.navLink }>
+                <ListItem
+                  button
+                  className={
+                    history.location.pathname.includes(linkItem[0]) ? classes.selected : classes.unselected
+                  }
+                >
+                  <ListItemText primary={ linkItem[1] } />
+                </ListItem>
+              </Link>
+            );
+          })}
         </List>
         <Divider className={ classes.divider } />
         <Box className={ classes.bottom }>
@@ -144,7 +117,7 @@ const SideBar = ({ toggleDrawer, setToggleDrawer }) => {
           onClose={() => setToggleDrawer(false)}
           onOpen={() => setToggleDrawer(true)}
         >
-          {list("left")}
+          {list()}
         </SwipeableDrawer>
       </React.Fragment>
     </div>
