@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { AppBar, Box, Toolbar, IconButton } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import MenuIcon from '@material-ui/icons/Menu';
+import TextField from '@material-ui/core/TextField';
 import SearchIcon from '@material-ui/icons/Search';
 
 import Hero from './icons/Hero';
@@ -27,11 +28,26 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  inputSearch: {
+    width: '100%',
+    background: 'white',
+    borderTop: '5px solid white',
+    transition: '2s',
+    '& .MuiInputBase-input': {
+      paddingLeft: theme.spacing(3),
+      paddingRight: theme.spacing(3),
+    },
+    '& .MuiInputLabel-root': {
+      paddingLeft: theme.spacing(3),
+      fontWeight: '700',
+    },
+  }
 }));
   
 const TopBar = () => {
   const classes = useStyles();
   const [toggleDrawer, setToggleDrawer] = useState(false);
+  const [toggleSearch, setToggleSearch] = useState(false);
 
   return (
     <div className={classes.root}>
@@ -55,11 +71,13 @@ const TopBar = () => {
             edge="end"
             aria-label="search"
             color="inherit"
+            onClick={() => setToggleSearch(!toggleSearch)}
           >
             <SearchIcon />
           </IconButton>
         </Toolbar>
       </AppBar>
+      { toggleSearch && <TextField onBlur={() => setToggleSearch(false)} className={ classes.inputSearch } id="outlined-search" label="Busque o serviço desejado..." type="search" /> }
       <SideBar toggleDrawer={toggleDrawer} setToggleDrawer={setToggleDrawer} />
     </div>
   );
