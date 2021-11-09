@@ -11,8 +11,6 @@ import SideBar from './SideBar';
 const useStyles = makeStyles((theme) => ({
   root: {
     background: '#dbdbdb89',
-    height: '100vh',
-    flexGrow: 1,
   },
   toolbar: {
     flexGrow: 1,
